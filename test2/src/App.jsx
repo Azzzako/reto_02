@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react'
 import Cards from './Cards'
+import img from './assets/dic.png'
 
 function App() {
   const [res, setRes] = useState(null)
@@ -22,30 +23,40 @@ function App() {
     } else {
       setRes(null)
     }
+
+    setSearch('')
   }
 
-  console.log(res)
+  // console.log(res)
   return (
-    <>
-      <form onSubmit={handlerCallApi}>
-        <input type='text' placeholder='Search' value={search} onChange={handleOnChange} />
-        <input type='submit' />
-      </form>
-  
-      
-    
-    {res?.map((res, index) => {
-      return (
-        <Cards 
-        key={index}
-        definitions={res.definitions}
-        />
-      )
-    })}
+    <div>
+      <section className='container'>
+        <img src={img} alt={img} className='image'/>
+        <form onSubmit={handlerCallApi}>
+          <input type='text' placeholder='Search' value={search} onChange={handleOnChange} />
+          <input type='submit' />
+        </form>
+      </section>
 
-  
-      
-    </>
+
+
+      <h2 style={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}>Definitions</h2>
+
+      <div className='definitions'>
+        {res?.map((res, index) => {
+          return (
+            <Cards
+              key={index}
+              definitions={res.definitions}
+            />
+          )
+        })}
+      </div>
+
+
+
+
+    </div>
 
   );
 }
