@@ -3,8 +3,8 @@ const http = require('http');
 const word = 'example';
 
 const options = {
-  hostname: 'localhost',
-  port: 80,
+  hostname: 'api.dictionaryapi.dev',
+  port: 443,
   path: `/api/v2/entries/en/${word}`,
   method: 'GET'
 };
